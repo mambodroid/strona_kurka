@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin | Pan Kurka</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        'cream-dark': '#F4EFE6',
+                        forest: '#1B5E20',
+                        'forest-light': '#2E7D32',
+                        terracotta: '#E01616',
+                        wood: '#A0522D',
+                        sun: '#FBC02D'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-forest antialiased">
+    
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/20 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i data-lucide="egg" class="w-8 h-8 text-sun"></i>
+                <span class="font-serif text-2xl font-bold text-forest">Pan Kurka</span>
+            </a>
+            <a href="index.html" class="text-forest hover:text-terracotta transition-colors font-medium flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót do strony
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-wood/10">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold text-forest mb-8 text-center">Regulamin strony</h1>
+                
+                <div class="prose prose-forest lg:prose-lg max-w-none space-y-8 text-forest/80">
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">1. Postanowienia ogólne</h2>
+                        <p>Niniejszy regulamin określa zasady korzystania ze strony internetowej <span class="font-semibold">www.pankurka.pl</span>.</p>
+                        <p class="mt-2 text-sm bg-cream p-4 rounded-xl border-l-4 border-terracotta">
+                            <span class="font-bold">Właścicielem strony jest:</span><br>
+                            Nowogrodzki & Ostrowski, NIP: 6912594311<br>
+                            Kontakt: Kontakt@pankurka.pl
+                        </p>
+                        <p class="mt-2">Każdy użytkownik korzystający ze strony zobowiązany jest do przestrzegania niniejszego regulaminu.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">2. Charakter strony</h2>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Strona ma charakter informacyjny.</li>
+                            <li>Strona nie prowadzi sprzedaży produktów ani usług za jej pośrednictwem.</li>
+                            <li>Informacje prezentowane na stronie mają charakter poglądowy i mogą ulec zmianie.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">3. Zasady korzystania ze strony</h2>
+                        <p class="font-bold">Użytkownik zobowiązuje się do:</p>
+                        <ul class="list-disc pl-5 space-y-2 mb-4">
+                            <li>korzystania ze strony w sposób zgodny z prawem,</li>
+                            <li>niepodejmowania działań zakłócających działanie strony,</li>
+                            <li>niedostarczania treści o charakterze bezprawnym.</li>
+                        </ul>
+                        <p class="font-bold">Zabrania się:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>ingerowania w strukturę strony,</li>
+                            <li>prób nieautoryzowanego dostępu do systemu,</li>
+                            <li>wykorzystywania strony w celach sprzecznych z jej przeznaczeniem.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">4. Odpowiedzialność</h2>
+                        <p>Administrator dokłada starań, aby treści na stronie były aktualne i rzetelne, jednak nie gwarantuje ich pełnej aktualności.</p>
+                        <p>Administrator nie ponosi odpowiedzialności za przerwy w działaniu strony, błędy techniczne oraz skutki korzystania z informacji zawartych na stronie.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">5. Prawa autorskie</h2>
+                        <p>Wszelkie treści zamieszczone na stronie (teksty, grafiki, logo, zdjęcia) stanowią własność Administratora lub są wykorzystywane legalnie. Zabrania się kopiowania, rozpowszechniania lub wykorzystywania materiałów bez zgody Administratora.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">6. Linki zewnętrzne</h2>
+                        <p>Strona może zawierać odnośniki do innych stron internetowych. Administrator nie ponosi odpowiedzialności za treści znajdujące się na tych stronach.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">7. Dane osobowe i prywatność</h2>
+                        <p>Zasady przetwarzania danych osobowych określa Polityka Prywatności dostępna na stronie.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">8. Zmiany regulaminu</h2>
+                        <p>Administrator zastrzega sobie prawo do zmiany regulaminu w dowolnym czasie. Zmiany wchodzą w życie z chwilą ich opublikowania na stronie.</p>
+                    </section>
+
+                    <div class="pt-8 border-t border-wood/20 text-sm italic">
+                        Ostatnia aktualizacja: 29.04.2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-cream-dark border-t border-wood/20 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-forest/60 text-sm">© 2026 Pan Kurka. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

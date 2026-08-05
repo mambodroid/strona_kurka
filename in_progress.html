@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W budowie | Pan Kurka</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        forest: '#0d3b13',
+                        sun: '#FBC02D',
+                        terracotta: '#D32F2F'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-forest font-sans min-h-screen flex items-center justify-center p-6">
+    
+    <div class="max-w-md w-full bg-cream rounded-[3rem] p-10 shadow-2xl text-center border-b-8 border-r-8 border-black/20">
+        
+        <div class="flex justify-center mb-6">
+            <div class="w-20 h-20 bg-forest/5 rounded-full flex items-center justify-center">
+                <i data-lucide="egg" class="w-12 h-12 text-terracotta"></i>
+            </div>
+        </div>
+        
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-forest mb-4">W budowie...</h1>
+        
+        <p class="text-forest/70 text-lg mb-8 leading-relaxed">
+            Właśnie przygotowujemy tę sekcję specjalnie dla Ciebie. <br>
+            Wróć do nas niebawem!
+        </p>
+
+        <a href="index.html" class="inline-flex items-center justify-center w-full bg-sun hover:bg-yellow-400 text-forest px-8 py-4 rounded-full font-black text-lg transition-all transform hover:scale-105 shadow-xl">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+            Wróć do strony głównej
+        </a>
+        
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

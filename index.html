@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pan Kurka - świeże jajka od rolnika z dostawą pod drzwi. Wiejskie produkty lokalnie, bez pośredników. Zdrowe jedzenie prosto z kurnika.">
+    <meta name="keywords" content="jajka od rolnika, wiejskie produkty z dostawą, zdrowe jedzenie lokalnie, aplikacja Pan Kurka, jajka wiejskie, produkty rolnicze">
+    <title>Pan Kurka | Świeże Jajka Prosto od Rolnika</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        'cream-dark': '#F4EFE6',
+                        forest: '#1B5E20', /* Świeża, głęboka zieleń */
+                        'forest-light': '#2E7D32',
+                        terracotta: '#E01616', /* Wyrazista czerwień */
+                        'terracotta-light': '#FF1F1F',
+                        wood: '#A0522D', /* Ciepły brąz */
+                        'parchment': '#F5F1E8',
+                        sun: '#FBC02D' /* Żółty dopełniający */
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Prostszy, głębszy i czystszy gradient dla sekcji Hero (bez efektu mgły) */
+        .clean-hero-bg {
+            background: linear-gradient(135deg, #1B5E20 0%, #0d3b13 100%);
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-forest antialiased">
+    
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/20 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="egg" class="w-8 h-8 text-sun"></i>
+                    <span class="font-serif text-2xl font-bold text-forest">Pan Kurka</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#o-nas" class="text-forest hover:text-terracotta transition-colors font-medium">O nas</a>
+                    <a href="#produkty" class="text-forest hover:text-terracotta transition-colors font-medium">Produkty</a>
+                    <a href="#aplikacja" class="text-forest hover:text-terracotta transition-colors font-medium">Aplikacja</a>
+                    <a href="#kontakt" class="bg-terracotta text-white px-6 py-3 rounded-full hover:bg-terracotta-light transition-all transform hover:scale-105 font-semibold shadow-lg">
+                        Sprawdź dostępność
+                    </a>
+                </div>
+                
+                <button class="md:hidden text-forest" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="md:hidden hidden bg-cream border-t border-wood/20" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#o-nas" class="block px-3 py-2 text-forest hover:text-terracotta font-medium">O nas</a>
+                <a href="#produkty" class="block px-3 py-2 text-forest hover:text-terracotta font-medium">Produkty</a>
+                <a href="#aplikacja" class="block px-3 py-2 text-forest hover:text-terracotta font-medium">Aplikacja</a>
+                <a href="#kontakt" class="block px-3 py-2 text-terracotta font-semibold">Sprawdź dostępność</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-20 overflow-hidden relative grid grid-cols-1 lg:grid-cols-12 items-stretch" style="background-color: #0d3b13;">
+        
+        <div class="lg:col-span-4 flex flex-col justify-center p-6 sm:p-10 lg:pl-8 xl:pl-16 z-20 relative order-last lg:order-first min-h-[50vh] lg:min-h-[80vh]">
+            <div class="max-w-md text-left">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-sun font-semibold text-sm uppercase tracking-wider">Tradycja i Natura</span>
+                </div>
+
+                <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black font-serif leading-snug mb-6 text-balance hyphens-auto">
+                    Głęboki smak <br/>
+                    <span class="text-sun italic font-normal"> wiejskiej </span> pasji.
+                </h1>
+
+                <p class="text-cream/90 text-lg md:text-xl mb-10 leading-relaxed font-light">
+                    Połączyliśmy soczystą zieleń naszych pastwisk z barwą porannego słońca. Poznaj produkty, które zachwycają każdego dnia.
+                </p>
+
+                <div class="flex flex-wrap gap-5">
+                    <a href="#produkty" class="bg-sun hover:bg-yellow-400 text-[#0d3b13] px-10 py-4 rounded-lg font-extrabold text-lg transition-all transform hover:-translate-y-1 shadow-xl shadow-sun/20">
+                        ZOBACZ OFERTĘ
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8 relative overflow-hidden z-10 min-h-[45vh] order-first lg:order-last group">
+            <img src="img/baner.png" alt="Kury na wolnym wybiegu na zielonym pastwisku - źródło jajek Pan Kurka" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105">
+            
+            </div>
+        
+    </section>
+
+
+    <section id="o-nas" class="py-16 bg-parchment relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <span class="text-terracotta font-semibold tracking-wider uppercase text-sm">Nasza historia</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-forest mt-2 mb-6">Pan Kurka</h2>
+                <div class="w-20 h-1 bg-terracotta mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="prose prose-lg mx-auto text-forest/90 text-center leading-relaxed">
+                <p class="text-xl font-light mb-8">
+                    Pan Kurka to powrót do prostoty. Do czasów, gdy jedzenie miało smak, a rolnik był znany z imienia. 
+                    Nie jesteśmy kolejną korporacyjną siecią – jesteśmy mostem między Tobą a lokalnymi gospodarstwami, 
+                    które z pasją hodują kurki na wolnym wybiegu.
+                </p>
+                
+                <div class="my-10 relative">
+                    <img src="img/poziomy.png" alt="Tradycyjne polskie gospodarstwo rolne dostarczające wiejskie produkty" class="w-full h-auto object-cover rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-4 -right-4 bg-cream p-4 rounded-xl shadow-xl border border-wood/20 hidden md:block">
+                        <p class="font-serif text-terracotta font-bold italic text-sm">"Jakość, którą czuć w każdym posiłku"</p>
+                    </div>
+                </div>
+                
+                <p class="text-lg mb-6">
+                    Dostarczamy produkty <strong>bez pośredników</strong> – bezpośrednio z gospodarstwa na Twój stół. 
+                    Bez magazynów, bez miesięcy przetrzymywania w chłodniach. Tylko świeże jajka z tego tygodnia, 
+                    od kur, które mają swoje imiona i żyją w zgodzie z naturą.
+                </p>
+                
+                <p class="text-lg font-medium text-terracotta">
+                    Bo prawdziwe jedzenie nie potrzebuje etykiet – potrzebuje uczciwego źródła.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-16 bg-cream-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16"> 
+                <span class="text-terracotta font-semibold tracking-wider uppercase text-sm">Nasze obietnice</span>
+                <h2 class="font-serif text-5xl md:text-6xl font-bold text-forest mt-4">Dlaczego Pan Kurka?</h2> 
+                <p class="mt-4 text-xl text-forest/70 max-w-2xl mx-auto"> Cztery zasady, których się trzymamy każdego dnia </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"> 
+                <div class="group bg-white rounded-[2rem] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-b-8 border-transparent hover:border-forest hover:-translate-y-2 text-center">
+                    <div class="flex justify-center mb-6 h-28 items-center"> 
+                        <img src="img/5.1.png" alt="Ikona gwarantująca świeżość jajek" class="w-28 h-28 object-contain transition-transform group-hover:scale-110">
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-forest mb-3">Świeżość</h3> 
+                    <p class="text-forest/70 leading-relaxed text-base"> Bez magazynów i długiego przetrzymywania. Jajka zbierane dziś rano, u Ciebie najpóźniej jutro. </p>
+                </div>
+                
+                <div class="group bg-white rounded-[2rem] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-b-8 border-transparent hover:border-sun hover:-translate-y-2 text-center">
+                    <div class="flex justify-center mb-6 h-28 items-center">
+                        <img src="img/5.2.png" alt="Ikona dostawy produktów pod drzwi" class="w-28 h-28 object-contain transition-transform group-hover:scale-110">
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-forest mb-3">Wygoda</h3>
+                    <p class="text-forest/70 leading-relaxed text-base"> Dyskretna dostawa pod same drzwi. Nie musisz biegać po targach – my przywozimy wieś do miasta. </p>
+                </div>
+                
+                <div class="group bg-white rounded-[2rem] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-b-8 border-transparent hover:border-terracotta hover:-translate-y-2 text-center">
+                    <div class="flex justify-center mb-6 h-28 items-center">
+                        <img src="img/5.3.png" alt="Ikona sprawdzonego źródła pochodzenia żywności" class="w-28 h-28 object-contain transition-transform group-hover:scale-110">
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-forest mb-3">Źródło</h3>
+                    <p class="text-forest/70 leading-relaxed text-base"> Znasz swojego rolnika. Wiadomo, skąd pochodzą jajka i kto za nie odpowiada. Prawdziwi ludzie. </p>
+                </div>
+                
+                <div class="group bg-white rounded-[2rem] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-b-8 border-transparent hover:border-wood hover:-translate-y-2 text-center">
+                    <div class="flex justify-center mb-6 h-28 items-center">
+                        <img src="img/5.4.png" alt="Ikona naturalnej hodowli bez GMO" class="w-28 h-28 object-contain transition-transform group-hover:scale-110">
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-forest mb-3">Natura</h3>
+                    <p class="text-forest/70 leading-relaxed text-base"> Zero sztucznych ulepszeń. Kury na wolnym wybiegu, naturalne karmienie. Tak jak u babci. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produkty" class="py-24 bg-forest relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-sun font-semibold tracking-wider uppercase text-sm">Nasza oferta</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream mt-2 mb-6">Produkty prosto z kurnika</h2>
+                <p class="text-xl text-cream/80 max-w-2xl mx-auto">
+                    Aktualnie dostarczamy najwyższej jakości jajka wiejskie. Wkrótce więcej lokalnych pyszności.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 mb-16">
+    
+                <div class="group bg-[#EBE4D5] rounded-[2.5rem] p-10 shadow-xl hover:shadow-2xl transition-all overflow-hidden cursor-pointer border border-wood/20">
+                    <div class="flex flex-col md:flex-row gap-10 items-center md:items-start">
+                        
+                        <div class="overflow-hidden rounded-[2rem] border-8 border-terracotta shadow-2xl w-40 lg:w-48 aspect-square flex-shrink-0">
+                            <img src="img/hqklasa0.png" alt="Jajka ekologiczne klasa 0 - wolny wybieg Pan Kurka" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        
+                        <div class="text-center md:text-left min-w-0 w-full pt-4">
+                            <div class="inline-block bg-terracotta text-white text-sm font-black px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Bestseller</div>
+                            
+                            <h3 class="font-serif text-3xl lg:text-4xl font-bold mb-3 text-forest">
+                                Jajka klasa <span class="font-sans font-black">0</span>
+                            </h3>
+                            
+                            <p class="text-forest/80 text-xl leading-relaxed mb-4">Ekologiczne jajka z wolnego wybiegu. Kury karmione naturalnym ziarnem bez GMO.</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="group bg-[#EBE4D5] rounded-[2.5rem] p-10 shadow-xl hover:shadow-2xl transition-all overflow-hidden cursor-pointer border border-wood/20">
+                    <div class="flex flex-col md:flex-row gap-10 items-center md:items-start">
+                        
+                        <div class="overflow-hidden rounded-[2rem] border-8 border-wood shadow-2xl w-40 lg:w-48 aspect-square flex-shrink-0">
+                            <img src="img/hqklasa1.png" alt="Jajka wiejskie klasa 1 - świeże i zdrowe" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        
+                        <div class="text-center md:text-left min-w-0 w-full pt-4">
+                            <div class="inline-block bg-wood text-white text-sm font-black px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Popularne</div>
+                            
+                            <h3 class="font-serif text-3xl lg:text-4xl font-bold mb-3 text-forest">
+                                Jajka klasa <span class="font-sans font-black">1</span>
+                            </h3>
+                            
+                            <p class="text-forest/80 text-xl leading-relaxed mb-4">Wiejskie jajka z wolnego wybiegu od lokalnych rolników. Bogate w składniki odżywcze.</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        
+        </div>
+            
+        <div class="bg-[#EBE4D5] rounded-3xl p-10 border border-wood/20 text-center shadow-xl">
+            <h3 class="font-serif text-4xl font-bold mb-12 text-forest">W przygotowaniu</h3> 
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-6xl mx-auto"> 
+                
+                <div class="flex flex-col items-center group">
+                    <div class="w-40 h-40 md:w-48 md:h-48 bg-cream rounded-full border-8 border-forest p-2 shadow-lg mb-6 transform transition-transform group-hover:scale-110 flex items-center justify-center overflow-hidden">
+                        <img src="img/6.3.png" alt="Świeży nabiał wiejski - sery i mleko" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-bold text-forest text-2xl">Nabiał</span> 
+                </div>
+                
+                <div class="flex flex-col items-center group">
+                    <div class="w-40 h-40 md:w-48 md:h-48 bg-cream rounded-full border-8 border-forest p-2 shadow-lg mb-6 transform transition-transform group-hover:scale-110 flex items-center justify-center overflow-hidden">
+                        <img src="img/6.1.png" alt="Naturalny miód z lokalnej pasieki" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-bold text-forest text-2xl">Miód</span>
+                </div>
+                
+                <div class="flex flex-col items-center group">
+                    <div class="w-40 h-40 md:w-48 md:h-48 bg-cream rounded-full border-8 border-forest p-2 shadow-lg mb-6 transform transition-transform group-hover:scale-110 flex items-center justify-center overflow-hidden">
+                        <img src="img/6.4.png" alt="Ekologiczne warzywa i owoce prosto z pola" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-bold text-forest text-2xl">Świeże warzywa i owoce</span>
+                </div>
+                
+                <div class="flex flex-col items-center group">
+                    <div class="w-40 h-40 md:w-48 md:h-48 bg-cream rounded-full border-8 border-forest p-2 shadow-lg mb-6 transform transition-transform group-hover:scale-110 flex items-center justify-center overflow-hidden">
+                        <img src="img/6.2.png" alt="Świeże mięso z tradycyjnego chowu" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-bold text-forest text-2xl">Mięso</span>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="aplikacja" class="py-24 bg-gradient-to-br from-cream to-parchment relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 relative z-10">
+                    <span class="inline-block bg-sun text-forest font-bold tracking-wider uppercase text-xs px-3 py-1 rounded-full mb-4">Aplikacja Mobilna</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-forest mb-6">
+                        Nowoczesność w służbie tradycji
+                    </h2>
+                    <p class="text-xl text-forest/80 mb-8 leading-relaxed">
+                        Nasza aplikacja nie jest skomplikowanym narzędziem – to prosty sposób, aby tradycyjne jedzenie 
+                        było dostępne na wyciągnięcie ręki. Zamów świeże produkty w zaledwie trzech kliknięciach.
+                    </p>
+                    
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-2xl shadow-sm border border-wood/10 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-sun rounded-full flex items-center justify-center flex-shrink-0 text-forest font-black text-xl">1</div>
+                            <div>
+                                <h4 class="font-bold text-forest text-lg">Wybierz produkty</h4>
+                                <p class="text-forest/70">Przeglądaj ofertę lokalnych gospodarstw w Twojej okolicy.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-2xl shadow-sm border border-wood/10 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-sun rounded-full flex items-center justify-center flex-shrink-0 text-forest font-black text-xl">2</div>
+                            <div>
+                                <h4 class="font-bold text-forest text-lg">Zamów z dostawą</h4>
+                                <p class="text-forest/70">Dostarczamy od poniedziałku do piątku, z samego rana.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white p-4 rounded-2xl shadow-sm border border-wood/10 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-sun rounded-full flex items-center justify-center flex-shrink-0 text-forest font-black text-xl">3</div>
+                            <div>
+                                <h4 class="font-bold text-forest text-lg">Ciesz się świeżością</h4>
+                                <p class="text-forest/70">Odbierz produkty prosto od rolnika pod swoimi drzwiami.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="in_progress.html" class="inline-flex items-center justify-center bg-forest text-cream px-8 py-4 rounded-full font-bold hover:bg-forest-light transition-all shadow-lg hover:-translate-y-1">
+                            <i data-lucide="smartphone" class="w-5 h-5 mr-2 text-sun"></i>
+                            Pobierz na iOS
+                        </a>
+                        
+                        <a href="in_progress.html" class="inline-flex items-center justify-center bg-white text-forest border-2 border-forest px-8 py-4 rounded-full font-bold hover:bg-forest/5 transition-all shadow-lg hover:-translate-y-1">
+                            <i data-lucide="smartphone" class="w-5 h-5 mr-2 text-forest"></i>
+                            Pobierz na Android
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sun/40 rounded-full blur-[80px] -z-10"></div>
+                    
+                    <div class="relative z-10 bg-forest rounded-[3rem] p-4 shadow-2xl max-w-sm mx-auto transform rotate-2 hover:rotate-0 transition-transform duration-500 border-b-8 border-r-8 border-forest-light">
+                        <div class="bg-cream rounded-[2.5rem] overflow-hidden">
+                            <div class="bg-forest text-sun p-5 text-center flex items-center justify-center gap-2">
+                                <i data-lucide="egg" class="w-5 h-5"></i>
+                                <span class="font-serif font-bold text-xl">Pan Kurka</span>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-wood/20">
+                                    <div class="flex items-center space-x-4 mb-3">
+                                        <div class="w-14 h-14 bg-sun/10 rounded-xl flex items-center justify-center">
+                                            <i data-lucide="egg" class="w-7 h-7 text-sun"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-forest text-lg">Jajka Klasa 0</h4>
+                                            <p class="text-sm text-forest/60 font-medium">10 sztuk</p>
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-sun text-forest py-3 rounded-xl text-sm font-bold mt-2 shadow-sm">Dodaj do koszyka</button>
+                                </div>
+                                
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-wood/20">
+                                    <div class="flex items-center space-x-4 mb-2">
+                                        <div class="w-14 h-14 bg-forest/10 rounded-xl flex items-center justify-center">
+                                            <i data-lucide="truck" class="w-7 h-7 text-forest"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-forest text-lg">Dostawa</h4>
+                                            <p class="text-sm text-forest/60 font-medium">pon-pt, 6:00 - 12:00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-forest/5 rounded-2xl p-5 text-center mt-6">
+                                    <p class="text-forest font-bold text-xl mb-3">Suma: 22,00 zł</p>
+                                    <a href="in_progress.html" class="block w-full bg-forest text-cream py-4 rounded-xl font-bold shadow-md hover:bg-forest-light transition-colors">
+                                        Zamów teraz
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dla-rolnikow" class="py-16 bg-white border-t border-wood/10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <div class="relative order-first">
+                    <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl border border-wood/10 group">
+                        <img src="img/rolnicy.png" alt="Rolnik zbierający jajka - współpraca z Panem Kurką" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    </div>
+    
+                <div class="text-left">
+                    <span class="text-terracotta font-semibold tracking-wider uppercase text-sm mb-2 block">Współpraca</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-forest mb-8">Dla Rolników</h2>
+                    
+                    <div class="space-y-5 text-lg text-forest/80 leading-relaxed font-light">
+                        <p class="font-medium text-forest text-2xl mb-4">Jeżeli jesteś rolnikiem i czujesz, że to co robisz ma wartość – dobrze trafiłeś.</p>
+                        <p>Pan Kurka powstał z prostego przekonania: Dobre jedzenie zaczyna się u ludzi, którzy wkładają w nie serce.</p>
+                        <p>Szukamy gospodarstw, które stawiają na jakość, uczciwość i naturalne podejście do produkcji. Nie interesuje nas masowość. Interesuje nas prawdziwość.</p>
+                        <p>Chcemy budować długofalową współpracę — opartą na zaufaniu i prostych zasadach. Ty robisz to, na czym znasz się najlepiej. My zajmujemy się resztą — sprzedażą, logistyką i dotarciem do klientów.</p>
+                        <p class="font-medium text-forest pt-2">Jeśli chcesz, żeby Twoje produkty trafiały bezpośrednio do ludzi, którzy to docenią — odezwij się.</p>
+                    </div>
+                    
+                    <a href="tel:661949498" class="inline-flex items-center gap-3 mt-10 bg-terracotta text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-terracotta-light transition-all transform hover:-translate-y-1 shadow-xl shadow-terracotta/20">
+                        <i data-lucide="phone-call" class="w-6 h-6"></i>
+                        Zadzwoń: 661 94 94 98
+                    </a>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    <section id="kontakt" class="py-24 bg-forest relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream mb-6">
+                Gotowy na smak prawdziwego jedzenia?
+            </h2>
+            <p class="text-xl text-cream/90 mb-10 max-w-2xl mx-auto">
+                Dołącz do setek zadowolonych klientów, którzy wybrali świeżość i jakość. 
+                Sprawdź, czy dostarczamy w Twojej okolicy.
+            </p>
+            
+            <form class="max-w-md mx-auto space-y-4 bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-2xl">
+                <div>
+                    <input type="email" placeholder="Twój adres email" class="w-full px-6 py-4 rounded-full bg-white text-forest placeholder-forest/50 focus:outline-none focus:ring-4 focus:ring-sun/50 border-0 transition-all font-medium">
+                </div>
+                <div>
+                    <input type="text" placeholder="Kod pocztowy (np. 50-001)" class="w-full px-6 py-4 rounded-full bg-white text-forest placeholder-forest/50 focus:outline-none focus:ring-4 focus:ring-sun/50 border-0 transition-all font-medium">
+                </div>
+                <a href="in_progress.html" class="block text-center w-full bg-sun text-forest px-8 py-4 rounded-full font-black text-lg hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-xl">
+                    Sprawdź dostępność
+                </a>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-cream-dark border-t border-wood/20 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="egg" class="w-8 h-8 text-sun"></i>
+                        <span class="font-serif text-2xl font-bold text-forest">Pan Kurka</span>
+                    </div>
+                    <p class="text-forest/70 mb-6 max-w-sm">
+                        Dostarczamy świeże jajka i lokalne produkty prosto od rolnika pod Twoje drzwi. 
+                        Wybieraj naturalnie, zdrowo i bez pośredników.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="in_progress.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] text-white hover:opacity-80 transition-opacity">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    
+                        <a href="in_progress.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF0000] text-white hover:opacity-80 transition-opacity">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-forest mb-4">Szybkie linki</h4>
+                    <ul class="space-y-3 text-forest/70 font-medium">
+                        <li><a href="#o-nas" class="hover:text-terracotta transition-colors">O nas</a></li>
+                        <li><a href="#produkty" class="hover:text-terracotta transition-colors">Produkty</a></li>
+                        <li><a href="#aplikacja" class="hover:text-terracotta transition-colors">Aplikacja Pan Kurka</a></li>
+                        <li><a href="#dla-rolnikow" class="hover:text-terracotta transition-colors">Dla rolników</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-forest mb-4">Kontakt</h4>
+                    <ul class="space-y-3 text-forest/80 font-medium">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-terracotta/10 rounded-full flex items-center justify-center"><i data-lucide="phone" class="w-4 h-4 text-terracotta"></i></div>
+                            <span>661 94 94 98</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-terracotta/10 rounded-full flex items-center justify-center"><i data-lucide="mail" class="w-4 h-4 text-terracotta"></i></div>
+                            <span>kontakt@pankurka.pl</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-wood/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-forest/60 text-sm font-medium">
+                    © 2026 Pan Kurka. Wszystkie prawa zastrzeżone.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm font-medium text-forest/60">
+                    <a href="polityka_prywatnosci.html" class="hover:text-terracotta transition-colors">Polityka prywatności</a>
+                    <a href="regulamin.html" class="hover:text-terracotta transition-colors">Regulamin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+

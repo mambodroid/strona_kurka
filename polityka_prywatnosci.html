@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności | Pan Kurka</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        'cream-dark': '#F4EFE6',
+                        forest: '#1B5E20',
+                        terracotta: '#E01616',
+                        wood: '#A0522D',
+                        sun: '#FBC02D'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Source Sans Pro', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-forest antialiased">
+    
+    <nav class="fixed w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/20 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i data-lucide="egg" class="w-8 h-8 text-sun"></i>
+                <span class="font-serif text-2xl font-bold text-forest">Pan Kurka</span>
+            </a>
+            <a href="index.html" class="text-forest hover:text-terracotta transition-colors font-medium flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-wood/10">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold text-forest mb-8 text-center">Polityka Prywatności</h1>
+                
+                <div class="prose prose-forest lg:prose-lg max-w-none space-y-8 text-forest/80">
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">1. Informacje ogólne</h2>
+                        <p>Niniejsza polityka prywatności określa zasady korzystania ze strony internetowej <span class="font-semibold">www.pankurka.pl</span>.</p>
+                        <p class="mt-2 text-sm bg-cream p-4 rounded-xl border-l-4 border-forest">
+                            <span class="font-bold">Administratorem strony jest:</span><br>
+                            Nowogrodzki & Ostrowski, NIP: 6912594311<br>
+                            E-mail: Kontakt@pankurka.pl
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">2. Zakres przetwarzania danych</h2>
+                        <p>Strona internetowa ma charakter informacyjny. Administrator:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>nie zbiera danych osobowych użytkowników w sposób aktywny,</li>
+                            <li>nie udostępnia formularzy kontaktowych,</li>
+                            <li>nie umożliwia zakładania kont użytkowników,</li>
+                            <li>nie prowadzi sprzedaży przez stronę internetową.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">3. Dane techniczne</h2>
+                        <p>Podczas korzystania ze strony mogą być automatycznie przetwarzane dane techniczne (adres IP, typ przeglądarki, system operacyjny). Dane te są zapisywane w logach serwera wyłącznie do celów administracyjnych i bezpieczeństwa. Administrator nie wykorzystuje tych danych do identyfikacji użytkownika.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">4. Pliki cookies</h2>
+                        <p>Strona może wykorzystywać pliki cookies w celu prawidłowego działania strony i utrzymania sesji technicznej. Użytkownik może w każdej chwili zmienić ustawienia cookies w swojej przeglądarce.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">5. Udostępnianie danych</h2>
+                        <p>Administrator nie przekazuje danych użytkowników osobom trzecim, z wyjątkiem podmiotów obsługujących stronę (np. dostawca hostingu), wyłącznie w zakresie niezbędnym do jej działania.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-serif font-bold text-forest mb-4 border-b border-sun/30 pb-2">6. Prawa użytkownika</h2>
+                        <p>Zgodnie z RODO, użytkownikowi przysługuje prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, wniesienia sprzeciwu oraz złożenia skargi do Prezesa Urzędu Ochrony Danych Osobowych.</p>
+                    </section>
+
+                    <div class="pt-8 border-t border-wood/20 text-sm italic">
+                        Polityka obowiązuje od dnia: 29.04.2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-cream-dark border-t border-wood/20 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-forest/60 text-sm">© 2026 Pan Kurka. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
