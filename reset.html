@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Reset hasła — Pan Kurka</title>
+  <style>
+    /* Prosty, czytelny styl — bez frameworków. */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 360px;
+      box-sizing: border-box;
+    }
+    h1 { font-size: 20px; margin: 0 0 8px; text-align: center; }
+    p.sub { color: #666; font-size: 14px; text-align: center; margin: 0 0 20px; }
+    label { display: block; font-size: 13px; color: #444; margin-bottom: 6px; }
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      background: #e8820c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    .msg { font-size: 14px; text-align: center; margin-top: 16px; }
+    .msg.error { color: #c0392b; }
+    .msg.ok { color: #1e8449; }
+    .hidden { display: none; }
+    .center { text-align: center; }
+    .emoji { font-size: 40px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Stan 1: weryfikacja linku (zanim ustali się sesja z URL) -->
+    <div id="loadingView">
+      <h1>Reset hasła 🐔</h1>
+      <p class="sub">Weryfikuję link...</p>
+    </div>
+
+    <!-- Stan 2: formularz nowego hasła -->
+    <div id="formView" class="hidden">
+      <h1>Ustaw nowe hasło</h1>
+      <p class="sub">Wpisz nowe hasło do swojego konta Pan Kurka.</p>
+
+      <label for="password">Nowe hasło (min. 6 znaków)</label>
+      <input type="password" id="password" autocomplete="new-password" />
+
+      <label for="confirm">Powtórz nowe hasło</label>
+      <input type="password" id="confirm" autocomplete="new-password" />
+
+      <button id="submitBtn">Zapisz nowe hasło</button>
+      <div id="formMsg" class="msg"></div>
+    </div>
+
+    <!-- Stan 3: sukces -->
+    <div id="successView" class="hidden center">
+      <div class="emoji">✅</div>
+      <h1>Hasło zmienione</h1>
+      <p class="sub">Możesz wrócić do aplikacji Pan Kurka i zalogować się nowym hasłem.</p>
+    </div>
+
+    <!-- Stan 4: błąd / nieprawidłowy link -->
+    <div id="errorView" class="hidden center">
+      <div class="emoji">⚠️</div>
+      <h1>Link nieprawidłowy</h1>
+      <p class="sub" id="errorText">
+        Ten link do resetu hasła wygasł lub jest nieprawidłowy.
+        Poproś o nowy link w aplikacji.
+      </p>
+    </div>
+  </div>
+
+  <!-- supabase-js v2 (najnowsza stabilna linia 2.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // === Konfiguracja ===
+    // URL projektu jest publiczny. Anon key jest publiczny (ten sam co w aplikacji
+    // Flutter) — ale NIE wklejaj tu nigdy service_role key.
+    const SUPABASE_URL = 'https://awzkgrchhdiigjbsmjbc.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3emtncmNoaGRpaWdqYnNtamJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4MzY5NjYsImV4cCI6MjA5NDQxMjk2Nn0.0fZ408AraZOnopDjGdwitBXCVBTK_KlkKyV1iItGcMM'; // <-- wstaw anon key przed wgraniem na hosting
+
+    // detectSessionInUrl: true — supabase-js sam odczyta token z linku resetu
+    // (fragment #access_token=...&type=recovery) i ustawi sesję odzyskiwania.
+    // persistSession: false — to jednorazowa strona, nie trzymamy sesji w przeglądarce.
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: {
+        detectSessionInUrl: true,
+        flowType: 'implicit',
+        persistSession: false,
+      },
+    });
+
+    // Referencje do widoków
+    const loadingView = document.getElementById('loadingView');
+    const formView = document.getElementById('formView');
+    const successView = document.getElementById('successView');
+    const errorView = document.getElementById('errorView');
+    const errorText = document.getElementById('errorText');
+    const formMsg = document.getElementById('formMsg');
+    const submitBtn = document.getElementById('submitBtn');
+
+    let recoveryReady = false; // czy mamy ważną sesję resetu
+
+    function show(view) {
+      for (const v of [loadingView, formView, successView, errorView]) {
+        v.classList.add('hidden');
+      }
+      view.classList.remove('hidden');
+    }
+
+    function showError(message) {
+      if (message) errorText.textContent = message;
+      show(errorView);
+    }
+
+    // Gdy supabase-js wykryje token resetu z URL, wyśle zdarzenie PASSWORD_RECOVERY.
+    client.auth.onAuthStateChange((event, session) => {
+      if ((event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN') && session) {
+        recoveryReady = true;
+        show(formView);
+      }
+    });
+
+    // Po załadowaniu strony: sprawdź błędy w linku, a jeśli nie ma sesji
+    // i nie ma tokenu — pokaż "link nieprawidłowy".
+    window.addEventListener('load', async () => {
+      const hash = window.location.hash || '';
+
+      // Supabase zwraca błąd w fragmencie URL, gdy link wygasł/zużyty.
+      if (hash.includes('error')) {
+        showError('Link wygasł lub został już użyty. Poproś o nowy link w aplikacji.');
+        return;
+      }
+
+      // Daj chwilę na automatyczne ustawienie sesji z URL, potem sprawdź.
+      const { data } = await client.auth.getSession();
+      if (data.session) {
+        recoveryReady = true;
+        show(formView);
+        return;
+      }
+
+      // Brak tokenu w URL i brak sesji = ktoś wszedł bez ważnego linku.
+      const hasToken = hash.includes('access_token') || hash.includes('type=recovery');
+      if (!hasToken && !recoveryReady) {
+        showError();
+      }
+      // Jeśli token JEST, ale sesja jeszcze się nie ustawiła — czekamy na
+      // onAuthStateChange (zostaje widok "Weryfikuję link...").
+    });
+
+    // Zapis nowego hasła
+    submitBtn.addEventListener('click', async () => {
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      formMsg.className = 'msg';
+      formMsg.textContent = '';
+
+      if (!recoveryReady) {
+        formMsg.classList.add('error');
+        formMsg.textContent = 'Sesja resetu wygasła. Poproś o nowy link.';
+        return;
+      }
+      if (password.length < 6) {
+        formMsg.classList.add('error');
+        formMsg.textContent = 'Hasło musi mieć minimum 6 znaków.';
+        return;
+      }
+      if (password !== confirm) {
+        formMsg.classList.add('error');
+        formMsg.textContent = 'Hasła nie są takie same.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Zapisuję...';
+
+      try {
+        const { error } = await client.auth.updateUser({ password: password });
+        if (error) throw error;
+        show(successView);
+      } catch (e) {
+        // Ogólny komunikat — nie zdradzamy szczegółów technicznych.
+        formMsg.classList.add('error');
+        formMsg.textContent = 'Nie udało się zmienić hasła. Spróbuj ponownie.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Zapisz nowe hasło';
+      }
+    });
+  </script>
+</body>
+</html>
